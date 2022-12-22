@@ -38,7 +38,6 @@ class Skill(ABC):
     def use(self, user: BaseUnit, target: BaseUnit) -> str:
         """
         Проверка, достаточно ли выносливости у игрока для применения умения.
-        Для вызова скилла везде используем просто use
         """
         self.user = user
         self.target = target
@@ -56,11 +55,6 @@ class FuryPunch(Skill):
         self.target.get_damage(self.damage)
         self.user.stamina -= self.stamina
         return f'{self.user.name} использует {self.name} и наносит {self.damage} урона сопернику.'
-        # TODO логика использования скилла -> return str
-        # TODO в классе нам доступны экземпляры user и target - можно использовать любые их методы
-        # TODO именно здесь происходит уменшение стамины у игрока применяющего умение и
-        # TODO уменьшение здоровья цели.
-        # TODO результат применения возвращаем строкой
 
 
 class HardShot(Skill):
